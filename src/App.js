@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import ChanceList from "./components/chanceList";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <header>
+        <h1>Muertos y Heridos</h1>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          He pensado en un número de 3 cifras.<br/>
+          Debes adivinarlo en el mínimo número de intentos.<br/>
+          Muerto: cuando adivinas el número en la posición exacta que lo pensé.<br/>
+          Herido: cuando adivinas el número, pero en una posición distinta.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <ChanceList/>
     </div>
   );
 }

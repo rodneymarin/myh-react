@@ -1,13 +1,114 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root{
+  --text: #ffffff;
+  --background: #010814;
+  --dark: #011B35;
+  --light: #05274F;
+  --accent: #004A93;
+  --accent2: rgb(255, 115, 72);
+  --accent3: rgb(75, 233, 146);
+  --disabled: #144572;
+  --disabled-important: #1880D6;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  background-color: var(--background);
+  color: var(--text);
+}
+
+h1{
+  font-size: 2em;
+}
+
+body{
+  margin-top: 2em;
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header{
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+header > p{
+  color: var(--disabled-important);
+}
+
+.row-container{
+  display: flex;
+  flex-direction: row;
+  width: 700px;
+}
+
+.chance-container{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 60%;
+  background-color: var(--dark);
+  padding: 1rem 2rem;
+  border-radius: 20px 0 0 20px;
+}
+
+.chance-container > * {
+  flex-grow: 1;
+}
+
+.chance-container > input{
+  width: 75px;
+  padding: 0.3rem;
+  height: 100%;
+  background-color: var(--light);
+  border: none;
+  caret-color: var(--text);
+}
+
+.chance-container > button {
+  padding: 8px 30px;
+  background-color: var(--accent);
+  color: var(--text);
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+}
+
+.chance-container > button:hover {
+  filter: brightness(1.2);
+}
+
+.chance-container > *:disabled {
+  background-color: var(--disabled);
+  color: var(--disabled-important);
+  cursor:default;
+}
+
+.score-container{
+  display: flex;
+  gap: 1em;
+  background-color: var(--light);
+  padding: 1rem 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 20px 20px 0;
+  flex-grow: 1;
+}
+
+.muertos-noncero{
+  color: var(--accent2);
+}
+
+.heridos-noncero{
+  color: var(--accent3);
 }
