@@ -6,7 +6,7 @@
   --accent: #004A93;
   --accent2: rgb(255, 115, 72);
   --accent3: rgb(75, 233, 146);
-  --disabled: #144572;
+  --disabled: #0a345c;
   --disabled-important: #1880D6;
 }
 
@@ -49,22 +49,22 @@ header > p{
 .row-container{
   display: flex;
   flex-direction: row;
-  width: 700px;
+  width: 500px;
 }
 
 .chance-container{
   display: flex;
   align-items: center;
   gap: 1rem;
-  width: 60%;
+  width: 100%;
   background-color: var(--dark);
   padding: 1rem 2rem;
-  border-radius: 20px 0 0 20px;
+  border-radius: 10px;
 }
 
-.chance-container > * {
+/* .chance-container > * {
   flex-grow: 1;
-}
+} */
 
 .chance-container > input{
   width: 75px;
@@ -73,35 +73,56 @@ header > p{
   background-color: var(--light);
   border: none;
   caret-color: var(--text);
+  color: var(--text);
+  text-align: center;
+  
 }
 
-.chance-container > button {
+.button-play {
   padding: 8px 30px;
+  
   background-color: var(--accent);
   color: var(--text);
   border-radius: 8px;
   border: 0;
   cursor: pointer;
+  width: 100%;
 }
 
-.chance-container > button:hover {
-  filter: brightness(1.2);
-}
-
-.chance-container > *:disabled {
+.input-box:disabled, .button-play:disabled {
   background-color: var(--disabled);
   color: var(--disabled-important);
   cursor:default;
 }
 
+.input-box:disabled:hover, .button-play:disabled:hover {
+  filter: none;
+}
+
+.chance-container > span{
+  width: 20%
+}
+
+.chance-list-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
 .score-container{
   display: flex;
   gap: 1em;
-  background-color: var(--light);
-  padding: 1rem 2rem;
+  /* background-color: var(--light); */
   align-items: center;
   justify-content: center;
-  border-radius: 0 20px 20px 0;
+  /* border: 1px solid green; */
+}
+
+.non-visible{
+  display: none;
+}
+
+.play-score-container{
   flex-grow: 1;
 }
 
