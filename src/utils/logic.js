@@ -1,6 +1,6 @@
 function newNumberToGuess(userFirstGuess)
 {
-    var arr = ['1','2','3','4','5','6','7','8','9'];
+    var arr = ["1","2","3","4","5","6","7","8","9"];
     //select random digit from user input
     var posToSelect = Math.round(Math.random() * (3 - 1) + 1);
     //delete all user digits from array

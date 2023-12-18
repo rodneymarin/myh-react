@@ -1,7 +1,7 @@
-const Score = ({muertos, heridos, hasPlayed}) => {
+const Score = ({muertos, heridos, isVisible}) => {
     
     return (
-        <div className={`score-container ${hasPlayed ? "" : "non-visible"}`}>
+        <div className={`score-container ${isVisible ? "" : "non-visible"}`}>
             <div className={`muertos ${muertos == 0 ? "" : "muertos-noncero"}`}>
                 {muertos} {muertos==1?"Muerto":"Muertos"}
             </div>
