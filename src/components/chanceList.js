@@ -21,21 +21,28 @@ const ChanceList = () => {
     }
 
     const handleGameOver = () =>{
-        chances[chances.length-1].isGameOver = true;
+        var newChances = [...chances];
+        newChances[newChances.length-1].isGameOver = true;
+        setChances(newChances);
     }
 
     return (chances.map((chance) => (
-            <div className="row row-container">
-                <Chance
-                    chanceCount={chance.id}
-                    numberToGuess={numberToGuess}
-                    setNumberToGuess={setNumberToGuess}
-                    handleNewChance={handleNewChance}
-                    handleGameOver={handleGameOver}
-                />
-            </div>
-        ))
-    );
+        <>
+        <div className="row row-container">
+            <Chance
+                chanceCount={chance.id}
+                numberToGuess={numberToGuess}
+                setNumberToGuess={setNumberToGuess}
+                handleNewChance={handleNewChance}
+                handleGameOver={handleGameOver}
+            />
+        </div>
+        <div className={`row gameover-container ${chance.isGameOver?"":"non-visible"}`}>
+            ¡Lo adivinaste!
+            <button>Jugar de nuevo</button>
+        </div>
+        </>
+    )));
 };
  
 export default ChanceList;

@@ -11,7 +11,6 @@ const Chance = ({chanceCount, numberToGuess, setNumberToGuess, handleNewChance, 
     const [hasValidationError, setHasValidationError] = useState({status:false, message: ""});
 
     const handleButtonClick = () => {
-        
         var numToGuess = numberToGuess;
         var inputGuess = inputRef.current.value;
 

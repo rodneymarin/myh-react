@@ -9,6 +9,7 @@
   --disabled: #0a345c;
   --disabled-important: #1880D6;
   --messagebox: #360d26;
+  --gameoverbox: #0d3626;
 }
 
 *{
@@ -151,12 +152,16 @@ button{
   color: var(--accent3);
 }
 
-.gameover-box{
-  display: flex;
+.gameover-container{
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  background-color: var(--messagebox);
+  background-color: var(--gameoverbox);
+}
+
+.gameover-container > button{
+  background-color:forestgreen;
 }
 
 .validation-container{
