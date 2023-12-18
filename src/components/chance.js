@@ -2,7 +2,8 @@ import { useState, useRef } from "react";
 import Score from "./score";
 import { newNumberToGuess, calcMuertos, calcHeridos, hasRepDigits } from "../utils/logic";
 
-const Chance = ({chanceCount, numberToGuess, setNumberToGuess, handleNewChance, handleGameOver}) => {
+
+const Chance = ({chanceItem, numberToGuess, setNumberToGuess, handleNewChance, handleGameOver, handleNewGame}) => {
     //const [inputGuess, setInputGuess] = useState("");
     const inputRef = useRef(null);
     const [muertos, setMuertos] = useState(0);
@@ -10,7 +11,7 @@ const Chance = ({chanceCount, numberToGuess, setNumberToGuess, handleNewChance, 
     const [hasPlayed, setHasPlayed] = useState(false);
     const [hasValidationError, setHasValidationError] = useState({status:false, message: ""});
 
-    const handleButtonClick = () => {
+    const handlePlayButtonClick = () => {
         var numToGuess = numberToGuess;
         var inputGuess = inputRef.current.value;
 
@@ -24,44 +25,62 @@ const Chance = ({chanceCount, numberToGuess, setNumberToGuess, handleNewChance, 
         }
 
         setHasPlayed(true);
-        if(chanceCount == 1){
+        if(chanceItem.id == 1){
             numToGuess = newNumberToGuess(inputGuess);
+            console.log(numToGuess);
             setNumberToGuess(numToGuess);
         }
         const calcMu = calcMuertos(inputGuess, numToGuess);
         const calcHe =  calcHeridos(inputGuess, numToGuess, calcMu);
         setMuertos(calcMu);
         setHeridos(calcHe);
-        if(calcMu < 3){
-            handleNewChance();
-        }else{
+        if(calcMu == 3){
             handleGameOver();
         }
+        if(calcMu < 3){
+            handleNewChance();
+        }
+
     }
 
     const handleKeyDown = (e) => {
         setHasValidationError(false);
         switch (e.key){
             case "Enter":
-                handleButtonClick();
+                handlePlayButtonClick();
         }
+    }
+
+    const handleNewGameButtonClick = () => {
+        setHasPlayed(false);
+        handleNewGame();
     }
 
     return (
         <>
-        <div key={chanceCount.toString()} className="chance-container">
-            <span>Turno {chanceCount}</span>
-            <input
-                type="number" autoFocus className="input-box"
-                ref={inputRef}
-                onKeyDown={(e) =>handleKeyDown(e)}
-                disabled={hasPlayed}/>
-            <div className="play-score-container">
-                <button className={`button-play ${hasPlayed ? "non-visible" : ""}`} onClick={()=>{handleButtonClick()}}>Jugar</button>
-                <Score muertos={muertos} heridos={heridos} isVisible={hasPlayed}/>
+        <div className="row row-container">
+            <div className="chance-container">
+                <span>Turno {chanceItem.id}</span>
+                <input
+                    type="number" autoFocus className="input-box"
+                    ref={inputRef}
+                    onKeyDown={(e) =>handleKeyDown(e)}
+                    disabled={hasPlayed}/>
+                <div className="play-score-container">
+                    <button className={`button-play ${hasPlayed ? "non-visible" : ""}`} onClick={()=>{handlePlayButtonClick()}}>Jugar</button>
+                    <Score muertos={muertos} heridos={heridos} isVisible={hasPlayed}/>
+                </div>
             </div>
+            <div className={`validation-container ${hasValidationError.status ? "" : "non-visible"}`}>{hasValidationError.message}</div>
         </div>
-        <div className={`validation-container ${hasValidationError.status ? "" : "non-visible"}`}>{hasValidationError.message}</div>
+        {
+        chanceItem.isGameOver?
+            <div className={`row chance-container gameover-container`}>
+                ¡Lo adivinaste!
+                <button onClick={()=>handleNewGameButtonClick()}>Jugar de nuevo</button>
+            </div>
+            : ""
+        }
         </>
     );
 }

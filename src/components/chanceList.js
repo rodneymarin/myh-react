@@ -1,13 +1,9 @@
 import { useState } from "react";
 import Chance from "./chance";
-
-
-let initialChances = [
-    {id:1, isGameOver:false}
-];
+import { v4 as uuidv4 } from 'uuid';
 
 const ChanceList = () => {
-    const [chances, setChances] = useState(initialChances);
+    const [chances, setChances] = useState([{id:1, key:uuidv4(), isGameOver:false}]);
     const [numberToGuess, setNumberToGuess] = useState("");
 
     const handleNewChance = () =>{
@@ -17,7 +13,7 @@ const ChanceList = () => {
     }
 
     const handleNewGame = () =>{
-        setChances(initialChances);
+        setChances([{id:1, key:uuidv4(), isGameOver:false}]);
     }
 
     const handleGameOver = () =>{
@@ -28,19 +24,17 @@ const ChanceList = () => {
 
     return (chances.map((chance) => (
         <>
-        <div className="row row-container">
+
             <Chance
-                chanceCount={chance.id}
+                key={chance.key}
+                chanceItem={chance}
                 numberToGuess={numberToGuess}
                 setNumberToGuess={setNumberToGuess}
                 handleNewChance={handleNewChance}
                 handleGameOver={handleGameOver}
+                handleNewGame={handleNewGame}
             />
-        </div>
-        <div className={`row gameover-container ${chance.isGameOver?"":"non-visible"}`}>
-            ¡Lo adivinaste!
-            <button>Jugar de nuevo</button>
-        </div>
+        
         </>
     )));
 };
