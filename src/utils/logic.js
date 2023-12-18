@@ -34,4 +34,24 @@ function calcHeridos(userGuess, realNumber, muertos){
     return result-muertos;
 }
 
-export {newNumberToGuess, calcMuertos, calcHeridos};
+function hasRepDigits (cadena) {
+    // Crear un objeto para almacenar los dígitos ya vistos
+    var digitos = {};
+    // Recorrer la cadena de caracteres
+    for (var i = 0; i < cadena.length; i++) {
+      // Obtener el dígito actual
+      var digito = cadena [i];
+      // Si el dígito ya está en el objeto, significa que se repite
+      if (digitos [digito]) {
+        // Devolver verdadero
+        return true;
+      }
+      // Si no, agregar el dígito al objeto
+      digitos [digito] = true;
+    }
+    // Si se llega al final del bucle, significa que no hay dígitos repetidos
+    // Devolver falso
+    return false;
+}
+
+export {newNumberToGuess, calcMuertos, calcHeridos, hasRepDigits};

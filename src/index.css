@@ -47,6 +47,16 @@ header > p{
   color: var(--disabled-important);
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number]{
+  -moz-appearance: textfield;
+}
+
 .row{
   background-color: var(--dark);
   padding: 1rem 2rem;
@@ -55,7 +65,7 @@ header > p{
 
 .row-container{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 500px;
 }
 
@@ -147,4 +157,12 @@ button{
   align-items: center;
   gap: 2rem;
   background-color: var(--messagebox);
+}
+
+.validation-container{
+  text-align: center;
+  background-color: var(--messagebox);
+  color:mediumvioletred;
+  padding: 0.2rem 0;
+  border-radius: 20px;
 }
