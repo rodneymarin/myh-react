@@ -5,7 +5,7 @@ function newNumberToGuess(userFirstGuess)
     var posToSelect = Math.round(Math.random() * (3 - 1) + 1);
     //delete all user digits from array
     var arr2 = arr.filter((element)=>{
-        return (element != userFirstGuess[0]) && (element != userFirstGuess[1]) && (element != userFirstGuess[2]);
+        return (element !== userFirstGuess[0]) && (element !== userFirstGuess[1]) && (element !== userFirstGuess[2]);
     });
     //randomize array
     arr2.sort(() => Math.random()-0.5);
@@ -21,7 +21,7 @@ function newNumberToGuess(userFirstGuess)
 function calcMuertos(userGuess, realNumber){
     var result = 0;
     for(let i = 0; i < 3; i++) {
-        if (userGuess[i] == realNumber[i]) {result++};
+        if (userGuess[i] === realNumber[i]) {result++};
     }
     return result;
 }
