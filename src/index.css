@@ -44,7 +44,7 @@ header {
     margin-bottom: 3rem;
 }
 
-header > p {
+header>p {
     color: var(--disabled-important);
 }
 
@@ -67,7 +67,23 @@ input[type="number"] {
 .row-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 500px;
+    overflow: hidden;
+    animation: row-expand 0.2s linear;
+    height: 100px;
+}
+
+@keyframes row-expand {
+    from {
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    to {
+        height: 100px;
+    }
 }
 
 .chance-container {
@@ -78,9 +94,10 @@ input[type="number"] {
 }
 
 button {
-    padding: 8px 30px;
+    padding: 12px 30px;
     background-color: var(--accent);
     color: var(--text);
+    /* overflow: hidden; */
     border-radius: 8px;
     border: 0;
     cursor: pointer;
@@ -117,7 +134,7 @@ button {
     outline: 1px solid var(--accent);
 }
 
-.chance-container > span {
+.chance-container>span {
     width: 20%;
 }
 
@@ -146,10 +163,24 @@ button {
 
 .muertos-noncero {
     color: var(--accent2);
+    animation: score-bounce 0.5s ease-out;
 }
 
 .heridos-noncero {
     color: var(--accent3);
+    animation: score-bounce 0.5s ease-out;
+}
+
+@keyframes score-bounce {
+
+    from,
+    to {
+        transform: scale(100%, 100%);
+    }
+
+    50% {
+        transform: scale(125%, 125%);
+    }
 }
 
 .gameover-container {
@@ -160,7 +191,7 @@ button {
     background-color: var(--gameoverbox);
 }
 
-.gameover-container > button {
+.gameover-container>button {
     background-color: forestgreen;
 }
 
@@ -170,4 +201,35 @@ button {
     color: mediumvioletred;
     padding: 0.2rem 0;
     border-radius: 20px;
+}
+
+@media only screen and (max-width: 1200px) {
+    * {
+        font-size: 20px;
+    }
+
+    header {
+        width: 100%;
+    }
+
+    .row-container {
+        width: 500px;
+        height: 100px;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    * {
+        font-size: 14px;
+    }
+
+    header {
+        width: 320px;
+    }
+
+    .row-container {
+        width: 360px;
+        height: 70px;
+    }
 }
